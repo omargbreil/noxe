@@ -46,13 +46,7 @@ export default function Navbar(props)
       </ul>
 
 
-      <form className="d-flex me-5" role="search">
-      <input onChange={(e)=>{SearchItems(e.target.value)}} className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-      
-      <Link to="/SearchComponent">
-        <button className="mx-4 btn btn-outline-secondary addStyle" type="submit">Search</button>
-      </Link>
-      </form>
+     
 
      
       <ul className="navbar-nav mb-2 mb-lg-0">
@@ -67,6 +61,13 @@ export default function Navbar(props)
       
         
         {props.userData?<>
+          <form className="d-flex me-5 p-1" role="search">
+      <input onChange={(e)=>{SearchItems(e.target.value)}} className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+      
+      <Link to="/SearchComponent">
+        <button className="mx-4 btn btn-outline-secondary addStyle" type="submit">Search</button>
+      </Link>
+      </form>
           <li className="nav-item">
           <Link onClick={props.logOut} className="nav-link" aria-current="page">Log Out</Link>
         </li></>: <> 

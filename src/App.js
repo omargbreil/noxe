@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Navigate, Route , Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route , Routes} from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import Home from './Components/Home/Home';
 import Register from './Components/Register/Register';
@@ -43,7 +43,6 @@ function App() {
   
   /* - SMOOTH REFRESH OR  GET OUR LOCAL stroage  USER TOKEN WHEN WE REFRESH BY COMPONENT DID MOUNT - */
   const [userData, setUserData] = useState(null);
-  let navigate = useNavigate();
 
   useEffect(()=>{
 
@@ -68,8 +67,7 @@ function App() {
     setUserData(null)
 
 
-    navigate('/login')
-  }
+   return  <Navigate to='/login'/> }
 
   /* ---------------------------- SCROLL UP Button ---------------------------- */
 
