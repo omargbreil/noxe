@@ -133,7 +133,11 @@ function App() {
       <Route path='Register' element={<Register/>} />
       {/* --------------- sending our getUserData function as a props -------------- */}
       <Route path='Login' element={<Login getUserData={getUserData}/>} /> 
-      <Route path='*' element={<h2> 404  </h2>} />
+      <Route path='*' 
+      element={
+      <h2 className=' vh-100 text-opacity-25 text-light text-center d-flex justify-content-center align-items-center'>
+       page not found <span className='text-danger text-opacity-50 mx-3'> :( 404 </span>  
+      </h2>} />
 
     
     </Routes>

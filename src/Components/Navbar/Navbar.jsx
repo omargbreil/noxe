@@ -10,16 +10,16 @@ export default function Navbar(props)
   return (
     <div>
 
-<nav className="navbar navbar-expand-lg my-2 navbar-dark bg-transparent">
+<nav className="navbar navbar-expand-lg d-flex justify-content-center align-items-center my-2 navbar-dark bg-transparent">
   <div className="container-fluid">
-    <Link className="navbar-brand fw-bolder" to="home">NOXE</Link>
+    <Link className=" my-2 navbar-brand fw-bolder" to="home">NOXE</Link>
 
     {props.userData?<>
-      <form className="d-flex mx-1" role="search">
+      <form className="d-flex my-2" role="search">
       <input onChange={(e)=>{SearchItems(e.target.value)}} className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
       
       <Link to="/SearchComponent">
-        <button className=" mx-2 btn btn-outline-secondary addStyle" type="submit">Search</button>
+        <button className="btn btn-outline-secondary addStyle" type="submit">Search</button>
       </Link>
       </form></>:''}
 
@@ -29,8 +29,8 @@ export default function Navbar(props)
     </button>
 
     
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+    <div className="collapse navbar-collapse  my-2" id="navbarSupportedContent">
+      <ul className="navbar-nav me-auto  my-2 mb-lg-0">
         {props.userData?<>
           <li className="nav-item">
           <Link className="nav-link" aria-current="page" to="home">Home</Link>
