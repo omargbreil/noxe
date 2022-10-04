@@ -107,6 +107,7 @@ function App() {
     <Routes>
 {/* ------  putting the all component that cant be reached by the one who dont login --------------- */}
     
+      <Route path='/noxe' element={<ProtectedRoute><Home/></ProtectedRoute>} />
       <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>} />
       <Route path='home' element={<ProtectedRoute><Home/></ProtectedRoute>} />
       <Route path='SearchComponent' element={<ProtectedRoute><SearchComponent/></ProtectedRoute>} />
