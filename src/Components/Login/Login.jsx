@@ -107,10 +107,11 @@ export default function Login(props) {
       return <div key={index} className="alert alert-danger">{error.message}</div>
     }
     })}
-     {LoginErrors?<div className="alert alert-danger">{LoginErrors} 
+     {LoginErrors?LoginErrors===`email doesn't exist`?<div className="alert alert-danger">{LoginErrors} 
      <button onClick={registernow} className='btn btn-outline-dark mx-3'>
       register now
-      </button> </div> : ''}
+      </button> </div>:<div className="alert alert-danger">{LoginErrors} 
+     </div> : ''}
 
      
 
