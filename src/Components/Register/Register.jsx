@@ -95,7 +95,7 @@ export default function Register() {
     
     if (validateErors[index].context.label === "password") 
     {
-     return <div key={index}  className="alert alert-danger">"invalide password"</div>
+     return <div key={index}  className="alert alert-danger">"invalid password"</div>
       
     }else
     {

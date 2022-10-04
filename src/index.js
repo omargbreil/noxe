@@ -16,19 +16,20 @@ import {SearchContext} from './SearchContext/SearchContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
-  <BrowserRouter>
   <MediaContextProvider>
   <SearchContext>
 
 
 
+  <BrowserRouter>
 
   <App/>
+  </BrowserRouter>
+
   </SearchContext>
   </MediaContextProvider>
 
 
 
-</BrowserRouter>
 );
 
