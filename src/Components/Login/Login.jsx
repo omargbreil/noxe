@@ -29,6 +29,11 @@ export default function Login(props) {
     
  }
 
+ function registernow() 
+ {
+   navigate("/Register");
+ }
+
  async function submitLogin(e) {
     
   setLoadingSpiner(true)
@@ -102,7 +107,10 @@ export default function Login(props) {
       return <div key={index} className="alert alert-danger">{error.message}</div>
     }
     })}
-     {LoginErrors?<div className="alert alert-danger">{LoginErrors}</div> : ''}
+     {LoginErrors?<div className="alert alert-danger">{LoginErrors} 
+     <button onClick={registernow} className='btn btn-outline-dark mx-3'>
+      register now
+      </button> </div> : ''}
 
      
 
