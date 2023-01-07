@@ -44,15 +44,15 @@ export default function Login(props) {
     let res = await axios.post('https://registeration.vercel.app/user/signin' , user)  ;
     if (res.data.message==='done')
     {
+      setLoadingSpiner(false)
 
       /* --------- save the useData token in local storage as a userToken --------- */
       localStorage.setItem('userToken' , res.data.token);
       props.getUserData();
+      navigate('/home')
+      setLoginErrors('');
       
 
-      navigate('/home')
-        setLoadingSpiner(false)
-       setLoginErrors('');
        
     }
     else
@@ -66,6 +66,8 @@ export default function Login(props) {
   } catch (error) 
   {
     setLoginErrors(error.response.data.message);
+    setLoadingSpiner(false)
+
   }
 
 
