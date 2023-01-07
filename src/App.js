@@ -57,6 +57,7 @@ function App() {
 
    let decodedToken = jwtDecode(localStorage.getItem('userToken'));
    setUserData(decodedToken);
+   console.log(decodedToken);
    
         
   }

@@ -1,7 +1,6 @@
 import  axios  from 'axios';
 import React from 'react'
 import { useState } from 'react';
-import Joi from 'joi';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login(props) {
@@ -17,7 +16,6 @@ export default function Login(props) {
   })
   const [LoginErrors, setLoginErrors] = useState('');
   const [loadingSpiner, setLoadingSpiner] = useState(false);
-  const [validateErors, setvalidateErors] = useState([]);
 
  function getUser(e){
 
@@ -34,31 +32,21 @@ export default function Login(props) {
    navigate("/Register");
  }
 
- async function submitLogin(e) {
+ async function submitLogin(e) 
+ {
     
   setLoadingSpiner(true)
 
   e.preventDefault()
 
-
-    let v = validation(user);
-
-    if (v.error) 
+  try 
+  {
+    let res = await axios.post('https://registeration.vercel.app/user/signin' , user)  ;
+    if (res.data.message==='done')
     {
-      setLoadingSpiner(false)
 
-        setvalidateErors(v.error.details)
-      
-    }else
-    {
-      setLoadingSpiner(true)
-
-      setvalidateErors([])
-    let {data} = await axios.post('https://route-egypt-api.herokuapp.com/signin' , user);
-    if (data.message==='success')
-    {
       /* --------- save the useData token in local storage as a userToken --------- */
-      localStorage.setItem('userToken' , data.token);
+      localStorage.setItem('userToken' , res.data.token);
       props.getUserData();
       
 
@@ -69,45 +57,36 @@ export default function Login(props) {
     }
     else
     {
-      
-      setLoginErrors(data.message);
+
+      setLoginErrors(res.data.message);
       setLoadingSpiner(false)
     }
-    }
     
-
-   
     
+  } catch (error) 
+  {
+    setLoginErrors(error.response.data.message);
   }
 
-  function validation(user) {
 
-    const schema = Joi.object({
+
+    
+
       
-     
-      email :Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }),
-      password : Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{3,30}$')),
+    
+
+    
+    
+
    
-
-      })
-
-     return schema.validate(user , {abortEarly:false});
     
   }
+
+
   return (
     <div>   
-    {validateErors.map((error , index) => {
     
-    if (validateErors[index].context.label === "password") 
-    {
-     return <div key={index}  className="alert alert-danger">"invalid password"</div>
-      
-    }else
-    {
-      return <div key={index} className="alert alert-danger">{error.message}</div>
-    }
-    })}
-     {LoginErrors?LoginErrors===`email doesn't exist`?<div className="alert alert-danger">{LoginErrors} 
+     {LoginErrors?LoginErrors===`you have to register`?<div className="alert alert-danger">{LoginErrors} 
      <button onClick={registernow} className='btn btn-outline-dark mx-3'>
       register now
       </button> </div>:<div className="alert alert-danger">{LoginErrors} 

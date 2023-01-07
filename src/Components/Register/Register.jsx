@@ -43,31 +43,40 @@ export default function Register() {
       setLoadingSpiner(false)
 
         setvalidateErors(v.error.details)
-        console.log(v);
     }else
     {
       setLoadingSpiner(true)
 
       setvalidateErors([])
 
-
-      let {data} = await axios.post('https://route-egypt-api.herokuapp.com/signup' , user);
+      try 
+      {
+        let {data} = await axios.post('https://registeration.vercel.app/user/signup' , user);
   
 
-      if (data.message==='success')
-    {
-        //navigate to next 
+        if (data.message==='done')
+      {
+          //navigate to next 
+          setLoadingSpiner(false)
+         setregisterErrors('');
+  
+         navigate('/login')
+      }
+      else
+      {
+        
+        setregisterErrors(data.message);
         setLoadingSpiner(false)
-       setregisterErrors('');
+      }
+        
+      } catch (error) 
+      {
+        setregisterErrors(error.response.data.message);
+        setLoadingSpiner(false) 
+      }
 
-       navigate('/login')
-    }
-    else
-    {
-      
-      setregisterErrors(data.message);
-      setLoadingSpiner(false)
-    }
+
+    
     }
   
     
