@@ -10,15 +10,27 @@ export default function Navbar(props)
   return (
     <div>
 
-<nav className="navbar navbar-expand-lg my-2 navbar-dark bg-transparent">
+<nav className="navbar navbar-expand-lg d-flex justify-content-center align-items-center my-2 navbar-dark bg-transparent">
   <div className="container-fluid">
-    <Link className="navbar-brand fw-bolder" to="home">NOXE</Link>
+    <Link className=" my-2 navbar-brand fw-bolder" to="home">NOXE</Link>
+
+    {props.userData?<>
+      <form className="d-flex my-2" role="search">
+      <input onChange={(e)=>{SearchItems(e.target.value)}} className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+      
+      <Link to="/SearchComponent">
+        <button className="btn btn-outline-secondary addStyle" type="submit">Search</button>
+      </Link>
+      </form></>:''}
+
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" 
     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+    
+    <div className="collapse navbar-collapse  my-2" id="navbarSupportedContent">
+      <ul className="navbar-nav me-auto  my-2 mb-lg-0">
         {props.userData?<>
           <li className="nav-item">
           <Link className="nav-link" aria-current="page" to="home">Home</Link>
@@ -33,6 +45,8 @@ export default function Navbar(props)
           <Link className="nav-link" aria-current="page" to="people">People</Link>
         </li>
 
+    
+
         <li>
             
 
@@ -46,13 +60,10 @@ export default function Navbar(props)
       </ul>
 
 
-      <form className="d-flex me-5" role="search">
-      <input onChange={(e)=>{SearchItems(e.target.value)}} className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
       
-      <Link to="/SearchComponent">
-        <button className="mx-4 btn btn-outline-secondary addStyle" type="submit">Search</button>
-      </Link>
-      </form>
+
+
+     
 
      
       <ul className="navbar-nav mb-2 mb-lg-0">
@@ -64,9 +75,13 @@ export default function Navbar(props)
 
            
         </li>
+
+        
       
         
         {props.userData?<>
+          
+          
           <li className="nav-item">
           <Link onClick={props.logOut} className="nav-link" aria-current="page">Log Out</Link>
         </li></>: <> 
@@ -80,6 +95,7 @@ export default function Navbar(props)
       </ul>
     </div>
   </div>
+  
 </nav>
 
     </div>

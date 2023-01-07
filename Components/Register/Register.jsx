@@ -43,31 +43,40 @@ export default function Register() {
       setLoadingSpiner(false)
 
         setvalidateErors(v.error.details)
-        console.log(v);
     }else
     {
       setLoadingSpiner(true)
 
       setvalidateErors([])
 
-
-      let {data} = await axios.post('https://route-egypt-api.herokuapp.com/signup' , user);
+      try 
+      {
+        let {data} = await axios.post('https://registeration.vercel.app/user/signup' , user);
   
 
-      if (data.message==='success')
-    {
-        //navigate to next 
+        if (data.message==='done')
+      {
+          //navigate to next 
+          setLoadingSpiner(false)
+         setregisterErrors('');
+  
+         navigate('/login')
+      }
+      else
+      {
+        
+        setregisterErrors(data.message);
         setLoadingSpiner(false)
-       setregisterErrors('');
+      }
+        
+      } catch (error) 
+      {
+        setregisterErrors(error.response.data.message);
+        setLoadingSpiner(false) 
+      }
 
-       navigate('/login')
-    }
-    else
-    {
-      
-      setregisterErrors(data.message);
-      setLoadingSpiner(false)
-    }
+
+    
     }
   
     
@@ -95,7 +104,7 @@ export default function Register() {
     
     if (validateErors[index].context.label === "password") 
     {
-     return <div key={index}  className="alert alert-danger">"invalide password"</div>
+     return <div key={index}  className="alert alert-danger">"invalid password"</div>
       
     }else
     {

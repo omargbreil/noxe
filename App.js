@@ -1,6 +1,6 @@
 import './App.css';
 
-import { Navigate, Route , Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route , Routes} from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import Home from './Components/Home/Home';
 import Register from './Components/Register/Register';
@@ -43,7 +43,6 @@ function App() {
   
   /* - SMOOTH REFRESH OR  GET OUR LOCAL stroage  USER TOKEN WHEN WE REFRESH BY COMPONENT DID MOUNT - */
   const [userData, setUserData] = useState(null);
-  let navigate = useNavigate();
 
   useEffect(()=>{
 
@@ -58,6 +57,7 @@ function App() {
 
    let decodedToken = jwtDecode(localStorage.getItem('userToken'));
    setUserData(decodedToken);
+   console.log(decodedToken);
    
         
   }
@@ -68,8 +68,7 @@ function App() {
     setUserData(null)
 
 
-    navigate('/login')
-  }
+   return  <Navigate to='/login'/> }
 
   /* ---------------------------- SCROLL UP Button ---------------------------- */
 
@@ -109,6 +108,7 @@ function App() {
     <Routes>
 {/* ------  putting the all component that cant be reached by the one who dont login --------------- */}
     
+      <Route path='/noxe' element={<ProtectedRoute><Home/></ProtectedRoute>} />
       <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>} />
       <Route path='home' element={<ProtectedRoute><Home/></ProtectedRoute>} />
       <Route path='SearchComponent' element={<ProtectedRoute><SearchComponent/></ProtectedRoute>} />
@@ -134,7 +134,11 @@ function App() {
       <Route path='Register' element={<Register/>} />
       {/* --------------- sending our getUserData function as a props -------------- */}
       <Route path='Login' element={<Login getUserData={getUserData}/>} /> 
-      <Route path='*' element={<h2> 404  </h2>} />
+      <Route path='*' 
+      element={
+      <h2 className=' vh-100 text-opacity-25 text-light text-center d-flex justify-content-center align-items-center'>
+       page not found <span className='text-danger text-opacity-50 mx-3'> :( 404 </span>  
+      </h2>} />
 
     
     </Routes>

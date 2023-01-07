@@ -39,7 +39,7 @@ export default function TvDetails()
           {
             TvDetails.genres?<>
             {TvDetails.genres.map((genre,index)=>
-            <li className='nav-link p-2 text-bg-info rounded-3 m-2'key={index}>{genre.name}</li>)}</>:''
+            <li className='nav-link p-2 text-bg-info text-light rounded-3 m-2'key={index}>{genre.name}</li>)}</>:''
           }
         </ul>
           <div className='my-2 py-4'>

@@ -5,7 +5,7 @@ import {MediaContext} from '../MediaContext/MediaContext';
 
 
 
-export const  SearchContextItems = createContext(null)
+export const  SearchContextItems = createContext([])
 export  function SearchContext(props) 
 
 {

@@ -17,8 +17,8 @@ export default function People() {
         <div className=" col-lg-4 justify-content-center align-item-center">
 
           <div>
-            <h2 className='w-75  border-top border-light border-opacity-25'> Trending actor to Watch now</h2>
-            <p className='border-bottom text-Opacity border-light border-opacity-25'>most watched actor by days </p>
+            <h2 className='w-75  border-top border-light border-opacity-25'> Trending actors to Watch now</h2>
+            <p className='border-bottom text-Opacity border-light border-opacity-25'>most watched actors by days </p>
           </div>
         </div>
 
